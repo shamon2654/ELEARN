@@ -1,0 +1,47 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'trt.css' %}">
+  <style>
+            .tdStyle
+            {
+            background-repeat:no-repeat;
+            background-size:cover;
+            }
+            label
+            { float: center; width: 10em; margin-right: 1em; }
+            .pic{
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;
+}
+    </style>
+</head>
+<script src="{% static 'jquery.min.js' %}"></script>
+<body class= "pic" background="{% static 'tec1.jpeg' %}">
+    <div  class="cen" align="center">
+        <form method="post" action="{% url 'update_pr_st' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset style="width:500px">
+            <br><br>
+                FIRSTNAME <br><br><input type="text" value="{{b.First_name}}" name="first_name"><br><br>
+                LASTNAME <br><br><input type="text" value="{{b.Last_name}}" name="last_name"><br><br>
+                USERNAME <br><br><input type="text" value="{{um.username}}" name="user_name"><br><br>
+                EMAIL <br><br><input type="email" value="{{b.Email}}" name="email"><br><br>
+                PASSWORD <br><br><input type="text" value="{{b.Password}}" name="psw"><br><br>
+                IMAGE: <br><br><img src="/media/{{b.Image}}" alt="No image" height="200px" width="200px"><br><br>
+            <input type="hidden" name="imgg" value="{{b.Image}}">
+                <br><br><input type="file" value="Upload new image" name="imgg1"><br><br>
+                <input type="submit" value="Update">
+            </fieldset>
+        </form>
+    </div>
+<div align="center">
+   <button type="submit" onclick="location.href='{% url 'stud_home' %}'" name='mybtn2'>Back</button>
+</div>
+</body>
+</html>
